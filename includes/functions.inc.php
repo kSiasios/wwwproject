@@ -133,7 +133,6 @@ function createUser($conn, $username, $email, $password, $admin, $skill, $canRed
 
     //get users ID
     $sqlReturnUID = "SELECT usersID FROM users WHERE usersEmail LIKE '" . $email . "';";
-    // $uid = '';
     if ($result = mysqli_query($conn, $sqlReturnUID)) {
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_array($result)) {
@@ -175,7 +174,6 @@ function createUser($conn, $username, $email, $password, $admin, $skill, $canRed
     debug_to_console("Statement closed");
     if ($canRedir == 1) {
         loginUser($conn, $email, $password);
-        // header("location: /Project2/index.php");
     } else {
         return;
     }
@@ -189,7 +187,6 @@ function deleteUID($conn, $uid, $redir)
     if ($result = mysqli_query($conn, $sqlReturnUID)) {
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_array($result)) {
-                // echo $row['usersID'];
                 $id = $row['usersID'];
             }
             // Free result set
@@ -202,23 +199,19 @@ function deleteUID($conn, $uid, $redir)
         exit();
     }
 
-    // echo $id;
     $sqlDelImg = "SELECT * FROM usersimg WHERE usersimg.userID = " . $id . ";";
     $imgUrl = "";
     if ($result2 = mysqli_query($conn, $sqlDelImg)) {
         if (mysqli_num_rows($result2) > 0) {
             while ($row2 = mysqli_fetch_array($result2)) {
-                // echo $row['usersID'];
                 $imgUrl = $row2['url'];
                 if (!empty($imgUrl)) {
                     //delete image first
                     if (strpos($imgUrl, 'https://') !== true) {
-                        // echo 'true';
                         //user was manually created and not through api
-                        // unlink("'" . $imgUrl . "'");
                         $urlTokens = explode('/', $imgUrl);
                         $trueImgUrl = strtolower(end($urlTokens));
-                        unlink("../uploads/" . $trueImgUrl); // . $imgUrl . "'");
+                        unlink("../uploads/" . $trueImgUrl);
                     }
                 }
             }
@@ -226,19 +219,14 @@ function deleteUID($conn, $uid, $redir)
             mysqli_free_result($result2);
         } else {
             echo "No records matching your query were found.";
-            // header("location: /Project2/index.php?error=usernotfound");
-            // exit();
         }
-    } else {
-        // header("location: /Project2/index.php?error=usernotfound");
-        // exit();
     }
 
     $sql1 = "DELETE FROM prousers WHERE prousers.uID = " . $id . ";";
     $sql2 = "DELETE FROM usersimg WHERE usersimg.userID = " . $id . ";";
     $sql4 = "DELETE FROM comments WHERE comments.uid = " . $id . ";";
     $sql5 = "DELETE FROM userfav WHERE userfav.uid = " . $id . " OR userfav.favuid = " . $id . ";";
-    // echo "deleting $id";
+
     $sql3 = "DELETE FROM users WHERE users.usersID = " . $id . ";";
     echo $sql3;
 
@@ -247,7 +235,7 @@ function deleteUID($conn, $uid, $redir)
         header("location: /Project2/pages/admin_panel.php?error=stmt1failed");
         exit();
     }
-    // mysqli_stmt_bind_param($stmt1, "i", $id);
+
     mysqli_stmt_execute($stmt1);
 
     $stmt2 = mysqli_stmt_init($conn);
@@ -255,7 +243,7 @@ function deleteUID($conn, $uid, $redir)
         header("location: /Project2/pages/admin_panel.php?error=stmt2failed");
         exit();
     }
-    // mysqli_stmt_bind_param($stmt2, "i", $id);
+
     mysqli_stmt_execute($stmt2);
 
     $stmt4 = mysqli_stmt_init($conn);
@@ -263,7 +251,7 @@ function deleteUID($conn, $uid, $redir)
         header("location: /Project2/pages/admin_panel.php?error=stmt4failed");
         exit();
     }
-    // mysqli_stmt_bind_param($stmt1, "i", $id);
+
     mysqli_stmt_execute($stmt4);
 
     $stmt5 = mysqli_stmt_init($conn);
@@ -271,7 +259,7 @@ function deleteUID($conn, $uid, $redir)
         header("location: /Project2/pages/admin_panel.php?error=stmt5failed");
         exit();
     }
-    // mysqli_stmt_bind_param($stmt1, "i", $id);
+
     mysqli_stmt_execute($stmt5);
 
     $stmt3 = mysqli_stmt_init($conn);
@@ -279,7 +267,7 @@ function deleteUID($conn, $uid, $redir)
         header("location: /Project2/pages/admin_panel.php?error=stmt3failed");
         exit();
     }
-    // mysqli_stmt_bind_param($stmt3, "i", $id);
+
     mysqli_stmt_execute($stmt3);
 
     if ($redir !== "") {
@@ -292,16 +280,14 @@ function deleteUID($conn, $uid, $redir)
 function flushDatabase($conn, $user, $spare)
 {
     $usersStr = implode(", ", $user);
-    // echo $usersStr;
     $sql = "SELECT usersID FROM users WHERE users.usersID in ($usersStr)";
-    // $stmt = mysqli_stmt_init($conn);
     echo $sql;
 
-    $sql1 = "DELETE FROM prousers WHERE "; //prousers.uID != $id";
-    $sql2 = "DELETE FROM usersimg WHERE "; //usersimg.userID != $id";
-    $sql3 = "DELETE FROM users WHERE "; //users.usersID != $id";
-    $sql4 = "DELETE FROM comments WHERE "; //comments.uid = " . $id . ";";
-    $sql5 = "DELETE FROM userfav WHERE "; //userfav.uid = " . $id . " OR userfav.favuid = " . $id . ";";
+    $sql1 = "DELETE FROM prousers WHERE ";
+    $sql2 = "DELETE FROM usersimg WHERE ";
+    $sql3 = "DELETE FROM users WHERE ";
+    $sql4 = "DELETE FROM comments WHERE ";
+    $sql5 = "DELETE FROM userfav WHERE ";
     $sqlDelImg = "SELECT * FROM usersimg WHERE ";
     $i = 0;
 
@@ -354,17 +340,14 @@ function flushDatabase($conn, $user, $spare)
     if ($result2 = mysqli_query($conn, $sqlDelImg)) {
         if (mysqli_num_rows($result2) > 0) {
             while ($row2 = mysqli_fetch_array($result2)) {
-                // echo $row['usersID'];
                 $imgUrl = $row2['url'];
                 if (!empty($imgUrl)) {
                     //delete image first
                     if (strpos($imgUrl, 'https://') !== true) {
-                        // echo 'true';
                         //user was manually created and not through api
-                        // unlink("'" . $imgUrl . "'");
                         $urlTokens = explode('/', $imgUrl);
                         $trueImgUrl = strtolower(end($urlTokens));
-                        unlink("../uploads/" . $trueImgUrl); // . $imgUrl . "'");
+                        unlink("../uploads/" . $trueImgUrl);
                     }
                 }
             }
@@ -372,12 +355,7 @@ function flushDatabase($conn, $user, $spare)
             mysqli_free_result($result2);
         } else {
             echo "No records matching your query were found.";
-            // header("location: /Project2/index.php?error=usernotfound");
-            // exit();
         }
-    } else {
-        // header("location: /Project2/index.php?error=usernotfound");
-        // exit();
     }
 
     $stmt1 = mysqli_stmt_init($conn);
