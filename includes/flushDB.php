@@ -3,9 +3,10 @@
 include 'dbh.inc.php';
 include 'functions.inc.php';
 
-$userToSpare1 = 13; //Admin
-$userToSpare2 = 14; //Test User
-$userToSpare3 = 466;
+//example
+$userToSpare1 = 1;
+$userToSpare2 = 2;
+$userToSpare3 = 3;
 
 $usersToSpare = array($userToSpare1, $userToSpare2, $userToSpare3);
 
