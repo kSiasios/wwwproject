@@ -16,7 +16,6 @@ include_once '../navbar.php';
 
 <script>
 function deleteU(userToDelete) {
-    // alert("Hey");
     var obj = {
         table: []
     };
@@ -33,8 +32,6 @@ function deleteU(userToDelete) {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(json);
     window.location = '/Project2/index.php';
-    // alert("Database Flushed Successfully");
-    // console.log("Clicked!");
 }
 </script>
 
@@ -49,7 +46,6 @@ function deleteU(userToDelete) {
                     $sql1 = "SELECT * FROM users WHERE users.usersID = " . $_SESSION['userid'];
 
                     $result = mysqli_query($conn, $sql1);
-                    // echo '<div class="row">';
                     $imgUrl = "";
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -79,11 +75,7 @@ function deleteU(userToDelete) {
                     } else {
                         echo "No users yet!";
                     }
-                    // echo '</div>';
                 }
-
-                // <!-- <i class="fas fa-user" style="font-size:200px"></i> -->
-
                 if (isset($_SESSION['userid'])) {
                     echo '<tr><td style="text-align: center;"><p class="profile-name" style="font-size:50px">' . $_SESSION['useruid'] . '</p></td></tr>';
                 }
@@ -92,9 +84,7 @@ function deleteU(userToDelete) {
                     <td style="text-align: center;">
                         <form action='/Project2/includes/upload.php' method='POST' enctype='multipart/form-data'
                             style="display: block;">
-                            <!-- <label class="browse"> -->
                             <input type='file' name='file' />
-                            <!-- </label> -->
 
                             <button class='btn btn-primary' type='submit' name='submit'>Upload<i class="fas fa-upload"
                                     style="margin-left: 10px;"></i></button>

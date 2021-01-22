@@ -35,13 +35,9 @@ function removeFromFav(favid) {
     xhr.open("POST", "/Project2/includes/removeFromFav.php");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(json);
-    // window.location = '/Project2/index.php';
-    // alert("Database Flushed Successfully");
-    // console.log("Clicked!");
 }
 </script>
 <div>
-    <!-- <div class="row" style="position: absolute; left: 20px; top: 90px; height: 50px; justify-content:left"> -->
     <div class="container-fluid padding">
 
         <a href="/Project2/pages/profile.php?profileID=<?php echo $_SESSION['userid']; ?>" class="login-btn"
@@ -49,7 +45,6 @@ function removeFromFav(favid) {
                 class="fas fa-arrow-left"></i>back</a>
     </div>
 
-    <!-- </div> -->
     <div class="container-fluid padding" id="cardContainer">
     </div>
 

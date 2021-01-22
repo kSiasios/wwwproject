@@ -45,8 +45,6 @@ include_once '../navbar.php';
             }
         }
         ?>
-        <!-- <input type="text" id="email-address" name="email-address" value="email@myemail.com" readonly
-            style="border: none; border-radius: 3px; width: auto; max-width: 1000px; padding: 5px; margin: 5px; bottom: 0;"><br> -->
 
         <label for="user-email-address" style="padding: 5px; margin-left: 15px;">Your Email Address:</label>
         <?php
