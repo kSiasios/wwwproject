@@ -35,7 +35,6 @@ include_once '../navbar.php';
 
 <script>
 function deleteU(userToDelete) {
-    // alert("Hey");
     var obj = {
         table: []
     };
@@ -51,8 +50,6 @@ function deleteU(userToDelete) {
     xhr.open("POST", "/Project2/includes/deleteUser.php");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(json);
-    // alert("Database Flushed Successfully");
-    // console.log("Clicked!");
 }
 </script>
 
@@ -71,14 +68,12 @@ function deleteU(userToDelete) {
 
             $newLimit = 2;
 
-            // $limit = 2;
             $sql = "SELECT * FROM users ORDER BY usersID DESC LIMIT " . $newLimit . ";";
 
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    // echo '<li style="display: flex;">';
                     echo '<tr>';
 
                     echo "<td>";
@@ -89,7 +84,6 @@ function deleteU(userToDelete) {
                     echo '<td><button class="btn btn-danger" onclick="deleteU(\'' . $row['usersUID'] . '\')"
                     style="margin-bottom: 20px;"><i class="fas fa-trash-alt"></i></button></td>';
                     echo "</tr>";
-                    // echo "</li>";
                 }
             } else {
                 echo "No users found!";
