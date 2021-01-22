@@ -13,8 +13,6 @@
   height: 50px;
   border-radius: 50px;
   cursor: pointer;
-  /* background: #f35d42; */
-  /* background: #00aae6; */
   background: #c70000;
   opacity: 0.5;
   transition: ease-in 0.2s;
@@ -37,7 +35,6 @@
 }
 
 .card-body {
-  /* color: var(--card-text); */
   color: var(--bg);
   background: var(--card-bg);
 }

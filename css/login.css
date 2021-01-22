@@ -5,8 +5,6 @@ html {
 
   --bg: #d5d5d5;
   --color-text: rgb(70, 70, 70);
-  /* --navbar-color: #f35d42; */
-  /* --navbar-color: #00aae6; */
   --navbar-color: #70c9fa;
   --footer-color: #3f3f3f;
   --card-bg: #3f3f3f;
@@ -18,15 +16,9 @@ html[data-theme="dark"] {
   --bg: #333333;
   --color-text: #d5d5d5;
   --navbar-color: rgb(70, 70, 70);
-  /* --footer-color: #f35d42;
-  --card-bg: #f35d42; */
-  /* --footer-color: #00aae6;
-  --card-bg: #00aae6; */
-
   --footer-color: #70c9fa;
   --card-bg: #70c9fa;
   --card-text: #d5d5d5;
-  /* --drop-shadow: rgba(255, 255, 255, 0.144); */
   --drop-shadow: #70cafa71;
 }
 
@@ -41,9 +33,6 @@ p {
 
 a,
 a:hover {
-  /* color: #f35d42; */
-  /* color: #00aae6; */
-  /* color: #70c9fa; */
   color: var(--card-bg);
   font-weight: 500;
 }

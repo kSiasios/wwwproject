@@ -5,8 +5,6 @@ html {
 
   --bg: #d5d5d5;
   --color-text: rgb(70, 70, 70);
-  /* --navbar-color: #f35d42; */
-  /* --navbar-color: #00aae6; */
   --navbar-color: #70c9fa;
   --footer-color: #3f3f3f;
   --card-bg: #3f3f3f;
@@ -18,15 +16,9 @@ html[data-theme="dark"] {
   --bg: #333333;
   --color-text: #d5d5d5;
   --navbar-color: rgb(70, 70, 70);
-  /* --footer-color: #f35d42;
-  --card-bg: #f35d42; */
-  /* --footer-color: #00aae6;
-  --card-bg: #00aae6; */
-
   --footer-color: #70c9fa;
   --card-bg: #70c9fa;
   --card-text: #d5d5d5;
-  /* --drop-shadow: rgba(255, 255, 255, 0.144); */
   --drop-shadow: #70cafa71;
 }
 
@@ -41,9 +33,6 @@ p {
 
 a,
 a:hover {
-  /* color: #f35d42; */
-  /* color: #00aae6; */
-  /* color: #70c9fa; */
   color: var(--card-bg);
   font-weight: 500;
 }
@@ -59,8 +48,6 @@ a:hover {
   overflow: hidden;
   margin: 20px;
   height: auto;
-  /* min-height: 167px; */
-  /* max-height: 80%; */
   width: 600px;
   min-width: 200px;
   max-width: 80%;
@@ -73,17 +60,6 @@ a:hover {
 .col img {
   width: 15%;
 }
-
-/*
-.col h3 {
-    background-image: linear-gradient(0deg, #000000, #fff);
-    background-size: 100%;
-    background-repeat: repeat;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-*/
 
 .form-row {
   padding: 5px;
@@ -117,7 +93,6 @@ a:hover {
 }
 
 .toggle-container {
-  /* text-decoration: none; */
   position: relative;
   top: 10px;
   left: 0px;
