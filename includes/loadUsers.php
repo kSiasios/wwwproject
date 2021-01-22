@@ -3,7 +3,6 @@ include 'dbh.inc.php';
 
 $newLimit = $_POST['newlimit'];
 
-// $limit = 2;
 $sql = "SELECT * FROM users ORDER BY usersID DESC LIMIT " . $newLimit . ";";
 
 $result = mysqli_query($conn, $sql);
@@ -14,7 +13,6 @@ if (mysqli_num_rows($result) > 0) {
                 <tr>
                     <th>Users</th>';
     while ($row = mysqli_fetch_assoc($result)) {
-        // echo '<li style="display: flex;">';
         echo '<tr>';
 
         echo "<td>";
@@ -25,7 +23,6 @@ if (mysqli_num_rows($result) > 0) {
         echo '<td><button class="btn btn-danger" onclick="deleteU(\'' . $row['usersUID'] . '\')"
     style="margin-bottom: 20px;"><i class="fas fa-trash-alt"></i></button></td>';
         echo "</tr>";
-        // echo "</li>";
     }
     echo '</table>';
 } else {

@@ -4,7 +4,6 @@ include 'dbh.inc.php';
 include 'functions.inc.php';
 session_start();
 $requestPayload = file_get_contents("php://input");
-// echo "Hey from PHP";
 $data = json_decode($requestPayload);
 foreach ($data->table as $user) {
     $uid = $user->uid;

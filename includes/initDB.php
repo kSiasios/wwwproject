@@ -10,7 +10,6 @@ foreach ($data->table as $newUser) {
 
     $randomUsername = $newUser->un;
     $randomEmail = $newUser->em;
-    // $randomImg = $newUser->im;
     $randomPwd = randomStr(10); // random password with 10 chars
     $randomIsAdmin = 0;
     $randomSkill = "";
@@ -36,7 +35,6 @@ foreach ($data->table as $newUser) {
     $url = $newUser->img;
 
     createUser($conn, $randomUsername, $randomEmail, $randomPwd, $randomIsAdmin, $randomSkill, $canRedir, $url);
-    // }
 }
 
 var_dump($data);
