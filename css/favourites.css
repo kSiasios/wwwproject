@@ -1,0 +1,52 @@
+.container-fluid {
+  display: grid;
+}
+
+.card .fav-btn {
+  position: absolute;
+  place-items: center;
+  top: 5%;
+  right: 5%;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  /* background: #f35d42; */
+  /* background: #00aae6; */
+  background: #c70000;
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+
+.fa-arrow-left {
+  margin-right: 10px;
+}
+
+.card .fav-btn:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  color: #3f3f3f;
+}
+
+.fa-trash-alt {
+  color: #d5d5d5;
+  font-size: 32px;
+  padding-top: 2px;
+}
+
+.card-body {
+  /* color: var(--card-text); */
+  color: var(--bg);
+  background: var(--card-bg);
+}
+
+.card {
+  border: none;
+  border-radius: 100px;
+}
+
+.view-img {
+  background: var(--card-bg);
+}

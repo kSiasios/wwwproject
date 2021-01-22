@@ -1,0 +1,156 @@
+.navbar {
+  /*background: linear-gradient(45deg, #dd3e22, #e7fbff);*/
+  background: var(--navbar-color);
+  /*background: #e7fbff;*/
+  /*background: #007acc;*/
+  padding: 0.5rem;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+#navbarResponsive {
+  transition: 0.2s;
+}
+.navbar-nav {
+  align-items: center;
+}
+
+.navbar-nav li {
+  padding-right: 20px;
+}
+
+.login-btn {
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 2px solid var(--footer-color);
+  outline: none;
+  border-radius: 5px;
+  background: var(--footer-color);
+  color: var(--bg);
+  font-size: 1.1em !important;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: var(--bg);
+  color: var(--footer-color);
+}
+
+.nav-link {
+  font-size: 1.1em !important;
+  color: var(--social-cover) !important;
+  font-weight: lighter;
+  /* text-shadow: 1px 1px 1px rgb(255, 255, 255); */
+  /* color: var(--color-text) !important; */
+}
+.nav-link.active {
+  color: var(--card-bg) !important;
+  font-weight: normal;
+}
+
+.navbar-brand img {
+  width: 50px;
+}
+
+.hamburger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  right: 2em;
+}
+
+.toggle {
+  transform-origin: center;
+  width: 1.5em;
+  height: 0.2em;
+  background-color: var(--social-cover);
+  position: absolute;
+  cursor: pointer;
+  transition: 0.2s;
+  padding-left: 10px;
+}
+.toggle::before,
+.toggle::after {
+  content: "";
+  width: 1.5em;
+  height: 0.2em;
+  background-color: var(--social-cover);
+  position: absolute;
+  display: block;
+  transition: 0.2s;
+}
+.toggle::before {
+  top: -0.5em;
+  left: 0;
+  transform-origin: left top;
+  transform: rotatez(0deg);
+}
+.toggle::after {
+  bottom: -0.5em;
+  left: 0;
+  transform-origin: left bottom;
+  transform: rotatez(0deg);
+}
+
+#toggle:checked ~ .toggle::before {
+  transform: rotate(45deg);
+}
+#toggle:checked ~ .toggle::after {
+  transform: rotate(-45deg);
+}
+#toggle:checked ~ .toggle {
+  width: 0;
+  transform: rotate(0deg);
+  background-color: var(--navbar-color);
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  transition: 0.2s;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--bg);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  /* border: 1px solid #888; */
+  border: 1px solid var(--color-text);
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+#email-address,
+#user-email-address,
+#email-content {
+  background-color: var(--holder);
+  color: var(--color-text);
+}
+
+/* The Close Button */
+.close {
+  color: var(--footer-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

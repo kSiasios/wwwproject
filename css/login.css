@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700");
+
+html {
+  font-family: "Montserrat", sans-serif;
+
+  --bg: #d5d5d5;
+  --color-text: rgb(70, 70, 70);
+  /* --navbar-color: #f35d42; */
+  /* --navbar-color: #00aae6; */
+  --navbar-color: #70c9fa;
+  --footer-color: #3f3f3f;
+  --card-bg: #3f3f3f;
+  --card-text: #d5d5d5;
+  --drop-shadow: rgba(70, 70, 70, 0.5);
+}
+
+html[data-theme="dark"] {
+  --bg: #333333;
+  --color-text: #d5d5d5;
+  --navbar-color: rgb(70, 70, 70);
+  /* --footer-color: #f35d42;
+  --card-bg: #f35d42; */
+  /* --footer-color: #00aae6;
+  --card-bg: #00aae6; */
+
+  --footer-color: #70c9fa;
+  --card-bg: #70c9fa;
+  --card-text: #d5d5d5;
+  /* --drop-shadow: rgba(255, 255, 255, 0.144); */
+  --drop-shadow: #70cafa71;
+}
+
+body {
+  background: var(--navbar-color);
+}
+
+h3,
+p {
+  color: var(--color-text);
+}
+
+a,
+a:hover {
+  /* color: #f35d42; */
+  /* color: #00aae6; */
+  /* color: #70c9fa; */
+  color: var(--card-bg);
+  font-weight: 500;
+}
+
+.login-form {
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  overflow: hidden;
+  margin: 20px;
+  height: 500px;
+  min-height: 167px;
+  max-height: 80%;
+  width: 600px;
+  min-width: 200px;
+  max-width: 80%;
+  background: var(--bg);
+  border-radius: 15px;
+  box-shadow: 10px 10px 50px var(--drop-shadow),
+    -10px -10px 50px var(--drop-shadow);
+}
+
+.col img {
+  width: 15%;
+}
+
+.form-row {
+  padding: 5px;
+}
+.form-control {
+  margin: 3px;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.loginbtn {
+  width: 130px;
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 32px;
+  padding: 8px;
+  border: 2px solid var(--footer-color);
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: var(--footer-color);
+  color: var(--bg);
+  transition: 0.2s;
+}
+
+.loginbtn:hover {
+  background-color: var(--navbar-color);
+  color: var(--footer-color);
+}
+
+.toggle-container {
+  position: relative;
+  top: 20px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  text-align: center;
+  align-content: center;
+  align-self: center;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 32px;
+  height: 16px;
+  background: var(--footer-color);
+  display: block;
+  border-radius: 16px;
+  position: relative;
+}
+
+.fa-moon {
+  color: var(--footer-color);
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 7px;
+  margin-right: 3px;
+  position: relative;
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 14px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: var(--footer-color);
+}
+
+input:checked + label:after {
+  left: calc(100% - 1px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 32px;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 500ms !important;
+  transition-delay: 0 !important;
+}
+
+::selection {
+  background: var(--navbar-color);
+}
+
+::-moz-selection {
+  background: var(--navbar-color);
+}
