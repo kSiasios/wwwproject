@@ -18,14 +18,20 @@ if (mysqli_num_rows($result) > 0) {
 
         if (mysqli_num_rows($result2) > 0) {
             while ($row2 = mysqli_fetch_assoc($result2)) {
+                echo "<div class='comment-container'>";
+                if (isset($_SESSION['useruid'])) {
+                    if ($row2['usersUID'] == $_SESSION['useruid'] || $_SESSION['isadmin'] == 1) {
+                        echo '<button class="btn btn-danger" onclick="deleteCom(' . $row['id'] . ')"
+                        style="float: right;"><i class="fas fa-trash-alt"></i></button>';
+                    }
+                }
                 echo "<p><b>";
                 echo $row2['usersUID'];
                 echo "</p></b>";
                 echo "<p class='comment-message'>";
                 echo $row['commentValue'];
                 echo "</p>";
-                echo "<br>";
-                echo "<br>";
+                echo "</div>";
             }
         }
     }
