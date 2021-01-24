@@ -13,9 +13,13 @@
   height: 50px;
   border-radius: 50px;
   cursor: pointer;
+  /* background: #f35d42; */
+  /* background: #00aae6; */
   background: #70c9fa;
   opacity: 0.5;
   transition: ease-in 0.2s;
+
+  box-shadow: 1px 1px 20px #686868;
 }
 
 .card .fav-btn:hover {
@@ -73,6 +77,7 @@
 }
 
 .card-body {
+  /* color: var(--card-text); */
   color: var(--bg);
   background: var(--card-bg);
 }
@@ -86,6 +91,10 @@
   background: var(--card-bg);
 }
 
-.card-img-top {
-  width: 100px;
+/* new line */
+.comment-container {
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--holder);
+  border-radius: 5px;
 }
