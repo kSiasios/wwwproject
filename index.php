@@ -54,10 +54,12 @@ function addToFav(favid) {
 
     if (x === "0") {
         document.getElementById("favbtn-" + favid).style.opacity = "0.5";
+        // document.getElementById("favbtn-" + favid).style.transform = "scale(1)";
         document.getElementById("favbtn-" + favid).setAttribute("value", "1");
         xhr.open("POST", "/Project2/includes/removeFromFav.php");
     } else {
         document.getElementById("favbtn-" + favid).style.opacity = "1";
+        // document.getElementById("favbtn-" + favid).style.transform = "scale(1.05)";
         document.getElementById("favbtn-" + favid).setAttribute("value", "0");
         xhr.open("POST", "/Project2/includes/addToFav.php");
     }
@@ -71,6 +73,28 @@ function addToFav(favid) {
 
 <hr class="light">
 <!--- Comment Section --->
+<script>
+function deleteCom(comID) {
+    var obj = {
+        table: []
+    };
+
+    obj.table.push({
+        id: comID
+    });
+
+    var json = JSON.stringify(obj);
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "/Project2/includes/deleteCom.php");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(json);
+    setTimeout(function() {
+        window.location.href = "/Project2/index.php?deletedCommentSuccessfully";
+    }, 500);
+}
+</script>
 <div class="container-fluid padding">
     <div class="col-12 text-center">
         <h2>Comments</h2>
@@ -93,14 +117,20 @@ function addToFav(favid) {
 
                         if (mysqli_num_rows($result2) > 0) {
                             while ($row2 = mysqli_fetch_assoc($result2)) {
+                                echo "<div class='comment-container'>";
+                                if (isset($_SESSION['useruid'])) {
+                                    if ($row2['usersUID'] == $_SESSION['useruid'] || $_SESSION['isadmin'] == 1) {
+                                        echo '<button class="btn btn-danger" onclick="deleteCom(' . $row['id'] . ')"
+                                        style="float: right;"><i class="fas fa-trash-alt"></i></button>';
+                                    }
+                                }
                                 echo "<p><b>";
                                 echo $row2['usersUID'];
                                 echo "</p></b>";
                                 echo "<p class='comment-message'>";
                                 echo $row['commentValue'];
                                 echo "</p>";
-                                echo "<br>";
-                                echo "<br>";
+                                echo "</div>";
                             }
                         }
                     }
