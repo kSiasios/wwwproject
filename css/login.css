@@ -23,7 +23,7 @@ html[data-theme="dark"] {
 }
 
 body {
-  background: var(--navbar-color);
+  background: var(--bg);
 }
 
 h3,
@@ -55,8 +55,8 @@ a:hover {
   max-width: 80%;
   background: var(--bg);
   border-radius: 15px;
-  box-shadow: 10px 10px 50px var(--drop-shadow),
-    -10px -10px 50px var(--drop-shadow);
+/*   box-shadow: 10px 10px 50px var(--drop-shadow), */
+/*     -10px -10px 50px var(--drop-shadow); */
 }
 
 .col img {
