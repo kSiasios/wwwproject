@@ -8,8 +8,10 @@ $style = "";
 $resetStyle = "/Project2/css/reset.css";
 $useGlobal = 1;
 include_once '../header.php';
-if (!isset($_SESSION['isadmin'])) {
-    header('Location: /Project2/index.php');
+if (!isset($_SESSION['userid'])) {
+    echo "<script>window.location = '/index.php';</script>";
+    // header('Location: /index.php');
+    exit();
 }
 include_once '../navbar.php';
 ?>
