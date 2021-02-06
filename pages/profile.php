@@ -9,7 +9,9 @@ $resetStyle = "/Project2/css/reset.css";
 $useGlobal = 1;
 include_once '../header.php';
 if (!isset($_SESSION['userid'])) {
-    header('Location: /Project2/index.php');
+    echo "<script>window.location = '/index.php';</script>";
+    // header('Location: /index.php');
+    exit();
 }
 include_once '../navbar.php';
 ?>
