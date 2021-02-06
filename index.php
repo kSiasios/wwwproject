@@ -1,28 +1,30 @@
 <?php
 session_start();
 include 'includes/dbh.inc.php';
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 ?>
 
 <?php
-$title = "My Gallery - Konstantinos Siasios";
-$style = "/Project2/css/style.css";
-$resetStyle = "/Project2/css/reset.css";
+$title = "Home Page - WWW Project";
+$style = "/css/style.css";
+$resetStyle = "/css/reset.css";
 $useGlobal = 1;
 include_once 'header.php';
 include_once 'navbar.php';
 ?>
 <!-- <script src="js/loadCom.js"></script> -->
 <script>
-$(document).ready(function() {
-    $("#cardContainer").load("/Project2/includes/frontpageInit.php");
-    var commentCount = 4;
-    $("#loadCom").click(function() {
-        $("#comments").load("includes/loadcomments.php", {
-            commentNewCount: commentCount,
+    $(document).ready(function() {
+        $("#cardContainer").load("/includes/frontpageInit.php");
+        var commentCount = 4;
+        $("#loadCom").click(function() {
+            $("#comments").load("includes/loadcomments.php", {
+                commentNewCount: commentCount,
+            });
+            commentCount = commentCount + 2;
         });
-        commentCount = commentCount + 2;
     });
-});
 </script>
 <!--- Images --->
 <div class="container-fluid padding">
@@ -38,35 +40,57 @@ $(document).ready(function() {
 </div>
 <!--- Cards --->
 <script>
-function addToFav(favid) {
-    var x = document.getElementById("favbtn-" + favid).getAttribute("value");
-    var obj = {
-        table: []
-    };
 
-    obj.table.push({
-        uid: favid
-    });
+    function addToFav(favid) {
+        var x = document.getElementById("favbtn-" + favid).getAttribute("value");
+        var obj = {
+            table: []
+        };
 
-    var json = JSON.stringify(obj);
+        obj.table.push({
+            uid: favid
+        });
 
-    var xhr = new XMLHttpRequest();
+        var json = JSON.stringify(obj);
 
-    if (x === "0") {
-        document.getElementById("favbtn-" + favid).style.opacity = "0.5";
-        // document.getElementById("favbtn-" + favid).style.transform = "scale(1)";
-        document.getElementById("favbtn-" + favid).setAttribute("value", "1");
-        xhr.open("POST", "/Project2/includes/removeFromFav.php");
-    } else {
-        document.getElementById("favbtn-" + favid).style.opacity = "1";
-        // document.getElementById("favbtn-" + favid).style.transform = "scale(1.05)";
-        document.getElementById("favbtn-" + favid).setAttribute("value", "0");
-        xhr.open("POST", "/Project2/includes/addToFav.php");
+        var xhr = new XMLHttpRequest();
+
+        if (x === "0") {
+            document.getElementById("favbtn-" + favid).style.opacity = "0.5";
+            document.getElementById("favbtn-" + favid).setAttribute("value", "1");
+            xhr.open("POST", "/includes/removeFromFav.php");
+        } else {
+            document.getElementById("favbtn-" + favid).style.opacity = "1";
+            document.getElementById("favbtn-" + favid).setAttribute("value", "0");
+            xhr.open("POST", "/includes/addToFav.php");
+        }
+
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(json);
     }
 
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(json);
-}
+    function deleteU(userToDelete) {
+        // alert("Hey");
+        var obj = {
+            table: []
+        };
+
+        obj.table.push({
+            uid: userToDelete,
+            redir: "/index.php"
+        });
+
+        var json = JSON.stringify(obj);
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "/includes/deleteUser.php");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(json);
+        // alert("Database Flushed Successfully");
+        // console.log("Clicked!");
+        // window.location.reload(true)
+    }
 </script>
 <div class="container-fluid padding" id="cardContainer">
 </div>
@@ -74,26 +98,27 @@ function addToFav(favid) {
 <hr class="light">
 <!--- Comment Section --->
 <script>
-function deleteCom(comID) {
-    var obj = {
-        table: []
-    };
+    function deleteCom(comID) {
+        var obj = {
+            table: []
+        };
 
-    obj.table.push({
-        id: comID
-    });
+        obj.table.push({
+            id: comID
+        });
 
-    var json = JSON.stringify(obj);
+        var json = JSON.stringify(obj);
 
-    var xhr = new XMLHttpRequest();
+        var xhr = new XMLHttpRequest();
 
-    xhr.open("POST", "/Project2/includes/deleteCom.php");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(json);
-    setTimeout(function() {
-        window.location.href = "/Project2/index.php?deletedCommentSuccessfully";
-    }, 500);
-}
+        xhr.open("POST", "/includes/deleteCom.php");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(json);
+        setTimeout(function() {
+            window.location.href = "/index.php?deletedCommentSuccessfully";
+        }, 500);
+        // location = '/index.php?deletedCommentSuccessfully';
+    }
 </script>
 <div class="container-fluid padding">
     <div class="col-12 text-center">
@@ -141,11 +166,9 @@ function deleteCom(comID) {
             </div>
             <button class="btn btn-outline-secondary" id="loadCom">Load More Comments</button>
         </div>
-        <form action="includes/addcomment.inc.php" method="POST">
+        <form action="/includes/addcomment.inc.php" method="POST">
             <div class="add-new-comment" style="display: block; align-items: center;">
-                <textarea type="text" name="user-comment" id="user-comment" cols="80" rows="2"
-                    placeholder="Write a comment"
-                    style="border: none; border-radius: 3px; width: 70vw; max-width: 1000px; padding: 15px; margin: 5px; bottom: 0;"></textarea>
+                <textarea type="text" name="user-comment" id="user-comment" cols="80" rows="2" placeholder="Write a comment" style="border: none; border-radius: 3px; width: 70vw; max-width: 1000px; padding: 15px; margin: 5px; bottom: 0;"></textarea>
                 <button type="submit" name="submit" class="btn btn-outline-secondary">Post Comment</button>
             </div>
         </form>
