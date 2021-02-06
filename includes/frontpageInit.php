@@ -56,6 +56,9 @@ if (mysqli_num_rows($result) > 0) {
                                 } else {
                                     echo '<button class="fav-btn" value="1" id="favbtn-' . $row['usersID'] . '" onclick = "addToFav(' . $row['usersID'] . ')" ><i class="fas fa-heart"></i></button>';
                                 }
+                                if ($_SESSION['isadmin'] == 1) {
+                                    echo '<button class="del-btn" value="1" id="delbtn-' . $row['usersID'] . '" onclick = "deleteU(\'' . $row['usersUID'] . '\')" ><i class="fas fa-trash-alt"></i></button>';
+                                }
                             } else {
                                 echo '<button class="fav-btn" value="-1" id="favbtn-' . $row['usersID'] . '" onclick = "addToFav(' . $row['usersID'] . ')" ><i class="fas fa-heart"></i></button>';
                             }
