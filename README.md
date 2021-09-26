@@ -1,5 +1,5 @@
 # wwwproject
-This is the source code of my project for the course of WWW Technologies for the University of Thessaly (Grade: 10/10).
+This is the source code of my project for the course of WWW Technologies for the University of Thessaly.
 
 Huge thanks to:
 - Dani Krossing   (https://www.youtube.com/channel/UCzyuZJ8zZ-Lhfnz41DG5qLw)
@@ -7,3 +7,6 @@ Huge thanks to:
 - Stackoverflow   (https://stackoverflow.com/)
 - DEV Community   (https://dev.to/)
 - My friends for testing (https://github.com/3rg1s)
+
+UPDATE
+Grade: 10/10
